@@ -15,24 +15,171 @@ html(lang="en")
     .reveal
       .slides
         section
-          h3 understanding
-          h1 MVC
-          p 
-            small (or how to maintain your sanity)
+          h3(style="margin-bottom:0px;") understanding
+          h1(style="font-size:230px;") MVC
+          p.fragment
+            small (or maintaining your sanity while developing full-scale applications in the browser...)
 
         section
-          h4 @aaronfay
+          h3 @aaronfay
+          h5 dev manager - strathcom media
+          p afay@strathcom.com
 
         section
-          h2 this is another slide
-          p a bit more information about 
-            this slide program
-          pre
-            code(contenteditable="true")
-              var foo = "fizzle";
-              function fixit() {
+          h3 background
+          ul
+            li ~14 years web dev
+            li bailed! on php ~2006 for python
+            li django/backend dev to 2010
+            li "discovered" javascript
 
-              }
+        //----------------------------------------------
+        //- 
+        //- THE PROBLEM BASEMENT SET
+        //- 
+        section
+          section 
+            h1 the problem
+
+          section
+            img(src="img/jquery.png")
+
+          section
+            img(src="img/jobs.png")
+
+          section
+            p We need a jQuery Engineer...
+            p.fragment
+              img(src="img/jquery-engineer.png")
+
+          section
+            h3 to build our new web app!
+            img(src="img/mytube.png")
+
+          section
+            p or worse...
+
+          section
+            img(src="img/facebook.png")
+
+          section
+            h4 (12 months later)
+
+          section
+            p -- giant jquery screenshot --
+
+          section 
+            pre 
+              code 
+                /* bad code example 1 */
+
+          section 
+            pre 
+              code 
+                /* bad code example 2 */
+
+          section 
+            pre 
+              code 
+                /* bad code example 3 */
+
+        //----------------------------------------------
+        //- 
+        //- SERIOUS ISSUES BASEMENT SET 
+        //- 
+        section
+          section 
+            h2 We end up with some serious issues
+            small.fragment (for example...)
+
+          section 
+            h3 managing state on client AND server
+            pre 
+              code 
+                /* bad code example 1 */
+
+          section 
+            h3 using the dom to determine view state
+            pre 
+              code 
+                /* bad code example 2 */
+
+          section 
+            h3 (gross) rendering html and code snippets on the server side
+            pre 
+              code 
+                /* bad code example 3 */
+
+        section
+          h1 there has to be 
+          h1 a better way
+          small.fragment (and there is :)
+
+        //----------------------------------------------
+        //- 
+        //- WHAT IS MVC?
+        //- 
+        section
+          h2 what is
+          h1(style="font-size:230px") MVC?
+
+        section
+          p it's a "buzz word"
+
+        section
+          q that thing you should be using
+
+        section
+          q you're not a REAL developer until...
+
+        section
+          h3 Wikipedia says:
+          blockquote ... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands ...
+
+        section
+          p (still confused)
+
+        section
+          h4 turning to the internet, EVERYONE claims to be it
+          ul
+            li django
+            li angular
+            li spine
+            li knockout
+            li rails
+            li catalyst
+            li robotlegs
+
+        section 
+          h1 there's more!
+
+        section
+          h3.fragment MVC
+          h3.fragment MVCS
+          h3.fragment MVP
+          h3.fragment MVT
+          h3.fragment MVVM
+          h3.fragment MVW
+          h3.fragment MVMS
+
+        section
+          h2 huh?
+          img(src="img/help-me.jpg")
+
+        section
+          h3 what MVC really is
+          small.fragment (clearly)
+          h2.fragment misunderstood
+
+        section
+          h3 it really should be called 
+          h1 data state bindings
+          small.fragment (or something like that)
+
+        section
+          p let me illustrate
+          p with a simple example:
+
 
 
     script(src="lib/js/head.min.js")

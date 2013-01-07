@@ -13,21 +13,148 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h3>understanding</h3>
-          <h1>MVC</h1>
-          <p> <small>(or how to maintain your sanity)</small></p>
+          <h3 style="margin-bottom:0px;">understanding</h3>
+          <h1 style="font-size:230px;">MVC</h1>
+          <p class="fragment"><small>(or maintaining your sanity while developing full-scale applications in the browser...)</small></p>
         </section>
         <section>
-          <h4>@aaronfay</h4>
+          <h3>@aaronfay</h3>
+          <h5>dev manager - strathcom media</h5>
+          <p>afay@strathcom.com</p>
         </section>
         <section>
-          <h2>this is another slide</h2>
-          <p>a bit more information about 
-            <this>slide program</this>
-          </p>
-          <pre><code contenteditable="true">
-              <var>foo = "fizzle";</var>
-              <function>fixit() {</function>}</code></pre>
+          <h3>background</h3>
+          <ul>
+            <li>~14 years web dev</li>
+            <li>bailed! on php ~2006 for python</li>
+            <li>django/backend dev to 2010</li>
+            <li>"discovered" javascript</li>
+          </ul>
+        </section>
+        <section>
+          <section> 
+            <h1>the problem</h1>
+          </section>
+          <section><img src="img/jquery.png"></section>
+          <section><img src="img/jobs.png"></section>
+          <section>
+            <p>We need a jQuery Engineer...</p>
+            <p class="fragment"><img src="img/jquery-engineer.png"></p>
+          </section>
+          <section>
+            <h3>to build our new web app!</h3><img src="img/mytube.png">
+          </section>
+          <section>
+            <p>or worse...</p>
+          </section>
+          <section><img src="img/facebook.png"></section>
+          <section>
+            <h4>(12 months later)</h4>
+          </section>
+          <section>
+            <p>-- giant jquery screenshot --</p>
+          </section>
+          <section> 
+            <pre> <code>
+                 
+                /* bad code example 1 */</code></pre>
+          </section>
+          <section> 
+            <pre> <code>
+                 
+                /* bad code example 2 */</code></pre>
+          </section>
+          <section> 
+            <pre> <code>
+                 
+                /* bad code example 3 */</code></pre>
+          </section>
+        </section>
+        <section>
+          <section> 
+            <h2>We end up with some serious issues</h2><small class="fragment">(for example...)</small>
+          </section>
+          <section> 
+            <h3>managing state on client AND server</h3>
+            <pre> <code>
+                 
+                /* bad code example 1 */</code></pre>
+          </section>
+          <section> 
+            <h3>using the dom to determine view state</h3>
+            <pre> <code>
+                 
+                /* bad code example 2 */</code></pre>
+          </section>
+          <section> 
+            <h3>(gross) rendering html and code snippets on the server side</h3>
+            <pre> <code>
+                 
+                /* bad code example 3 */</code></pre>
+          </section>
+        </section>
+        <section>
+          <h1>there has to be </h1>
+          <h1>a better way</h1><small class="fragment">(and there is :)</small>
+        </section>
+        <section>
+          <h2>what is</h2>
+          <h1 style="font-size:230px">MVC?</h1>
+        </section>
+        <section>
+          <p>it's a "buzz word"</p>
+        </section>
+        <section>
+          <q>that thing you should be using</q>
+        </section>
+        <section>
+          <q>you're not a REAL developer until...</q>
+        </section>
+        <section>
+          <h3>Wikipedia says:</h3>
+          <blockquote>... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands ...</blockquote>
+        </section>
+        <section>
+          <p>(still confused)</p>
+        </section>
+        <section>
+          <h4>turning to the internet, EVERYONE claims to be it</h4>
+          <ul>
+            <li>django</li>
+            <li>angular</li>
+            <li>spine</li>
+            <li>knockout</li>
+            <li>rails</li>
+            <li>catalyst</li>
+            <li>robotlegs</li>
+          </ul>
+        </section>
+        <section> 
+          <h1>there's more!</h1>
+        </section>
+        <section>
+          <h3 class="fragment">MVC</h3>
+          <h3 class="fragment">MVCS</h3>
+          <h3 class="fragment">MVP</h3>
+          <h3 class="fragment">MVT</h3>
+          <h3 class="fragment">MVVM</h3>
+          <h3 class="fragment">MVW</h3>
+          <h3 class="fragment">MVMS</h3>
+        </section>
+        <section>
+          <h2>huh?</h2><img src="img/help-me.jpg">
+        </section>
+        <section>
+          <h3>what MVC really is</h3><small class="fragment">(clearly)</small>
+          <h2 class="fragment">misunderstood</h2>
+        </section>
+        <section>
+          <h3>it really should be called </h3>
+          <h1>data state bindings</h1><small class="fragment">(or something like that)</small>
+        </section>
+        <section>
+          <p>let me illustrate</p>
+          <p>with a simple example:</p>
         </section>
       </div>
     </div>
