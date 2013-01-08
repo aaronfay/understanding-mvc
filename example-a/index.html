@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Example A</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="./css/bootstrap-responsive.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Example A</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <ul class="nav nav-tabs">
+        <li class="active" id="home-tab"><a href="#" class="tab-button" id="home">Home</a></li>
+        <li id="profile-tab"><a href="#" class="tab-button" id="profile">Profile</a></li>
+        <li id="messages-tab"><a href="#" class="tab-button" id="messages">Messages</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="home-panel">
+          <div class="row">
+            <div class="span12">
+              <h3>Home</h3>
+            </div>
+            <div class="span4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean semper sem et lorem tempus vel hendrerit tortor scelerisque. Pellentesque eu elit non ligula ullamcorper suscipit. Phasellus viverra porta est. Curabitur quis elementum dolor. Sed vitae tincidunt odio. Quisque risus ante, posuere id luctus eget, consectetur eget est. Aenean varius euismod urna, non faucibus mi mattis in. Sed lobortis egestas magna, eu tristique sapien posuere quis. Cras non ultricies libero. Donec et lectus in diam tincidunt convallis. Phasellus urna mi, pharetra vestibulum aliquam vel, feugiat et tellus. Nullam in condimentum augue. Aliquam erat volutpat. Maecenas quis massa lorem, hendrerit congue mauris. Donec luctus aliquam ultrices. Etiam sed arcu diam, a imperdiet elit.
+            </div>
+            <div class="span4">
+              Cras ullamcorper libero a velit pellentesque viverra non quis urna. Integer a congue nulla. In hac habitasse platea dictumst. Vivamus ac dignissim ante. Aliquam a massa ullamcorper sem sagittis commodo ut volutpat est. Nam adipiscing egestas mattis. Suspendisse odio mi, feugiat tempor tincidunt non, rhoncus et ligula. Maecenas turpis purus, dictum eu lacinia in, iaculis malesuada orci. Sed sed velit arcu. Nunc tincidunt fringilla libero, id aliquam erat euismod non. Phasellus metus velit, posuere non vehicula non, tincidunt in lacus. Suspendisse condimentum orci luctus massa interdum varius. Aliquam semper vehicula massa, eget imperdiet purus cursus non. Donec feugiat tincidunt mi, quis semper augue gravida quis. Aliquam eget feugiat nisl.
+            </div>
+            <div class="span4">
+              Donec metus lectus, adipiscing nec hendrerit id, malesuada blandit erat. Sed convallis orci aliquet eros aliquet tempor. Nam scelerisque tempor consectetur. Maecenas vel pretium libero. In pulvinar lobortis risus, sed scelerisque ipsum fringilla vitae. Quisque elementum interdum felis, ac dignissim sapien vehicula et. Etiam volutpat scelerisque felis, id accumsan lectus mollis ac. Suspendisse lectus lacus, aliquam id feugiat eget, pulvinar id odio. Aenean lobortis lectus tristique urna sollicitudin lacinia. Sed in augue ipsum, ut rhoncus tellus. Proin ac arcu purus. Sed luctus ligula eget augue porta sodales. Etiam tincidunt elementum faucibus. Nunc ultricies aliquet pretium. Maecenas eget fermentum nisl. Nullam quam velit, bibendum tincidunt mollis ac, bibendum ac orci.
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="profile-panel">
+          <div class="row">
+            <div class="span12">
+              <h3>Profile</h3>
+            </div>
+            <div class="span3">
+              <div class="thumbnail">
+                <img src="./img/270x160.gif" alt="">
+              </div>
+            </div>
+            <div class="span9">
+              <div class="well">
+                <h3>Joe Smith <span style="font-size:18px;color:#aaa">joe@smith.com</span></h3>
+                <button class="btn btn-primary">Send Email</button>
+                <button class="btn ">Add to Favorites</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="messages-panel">
+          <div class="row">
+            <div class="span12">
+              <h3>Messages</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>From</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Susie Q</td>
+                    <td>susie@queue.com</td>
+                    <td><button class="btn btn-tiny btn-danger">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>John Smith</td>
+                    <td>john@home.com</td>
+                    <td><button class="btn btn-tiny btn-danger">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Fez Gomez</td>
+                    <td>fez1234@hotmail.com</td>
+                    <td><button class="btn btn-tiny btn-danger">delete</button></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Nathan Fillion</td>
+                    <td>serenity@shiny.com</td>
+                    <td><button class="btn btn-tiny btn-danger">delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./js/jquery.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.tab-button').on('click', function(event) {
+          // grab the id of the item we want to activate
+          var id = $(event.target).attr('id');
+          // show the proper tab 
+          $('.tab-button').parent('li').removeClass('active');
+          $('#' + id + '-tab').addClass('active');
+          // show the proper panel
+          $('.tab-pane').removeClass('active');
+          $('#' + id + '-panel').addClass('active');
+          return false;
+        })
+      });
+    </script>
+
+  </body>
+</html>

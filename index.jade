@@ -141,8 +141,7 @@ html(lang="en")
 
         section
           h3 Wikipedia says:
-          blockquote ... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands ...
-
+          blockquote ... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands for the model or view. A view can be any output representation of data, such as a chart or a diagram. Multiple views of the same data are possible, such as a pie chart for management and a tabular view for accountants code reusability and separation of concerns ...
         section
           p (still confused)
 
@@ -168,6 +167,7 @@ html(lang="en")
           h3.fragment MVVM
           h3.fragment MVW
           h3.fragment MVMS
+          h3.fragment ...
 
         section
           h2 huh?
@@ -184,14 +184,233 @@ html(lang="en")
           small.fragment (or something like that)
 
         section
-          h4 more simply put:
-          h2 binding views to your data.
-          small.fragment (and that's really it)
+          p a simple example
+          p (sans framework)
+
+        //----------------------------------------------
+        //- 
+        //- EXAMPLE A
+        //- 
+        section
+          section 
+            h3 example A
+
+          section 
+            p some tabs using "ul" (a la bootstrap)
+            pre
+              code.html
+                |  &lt;ul class="nav nav-tabs">
+                |    &lt;li class="active" id="home-tab">
+                |      &lt;a href="#" class="tab-button" <strong>id="home"</strong>>Home&lt;/a>
+                |    &lt;/li>
+                |    &lt;li id="profile-tab">
+                |      &lt;a href="#" class="tab-button" <strong>id="profile"</strong>>Profile&lt;/a>
+                |    &lt;/li>
+                |    &lt;li id="messages-tab">
+                |      &lt;a href="#" class="tab-button" <strong>id="messages"</strong>>Messages&lt;/a>
+                |    &lt;/li>
+                |  &lt;/ul>
+
+          section 
+            p le panels to match
+            pre
+              code.html
+                |  &lt;div class="tab-content">
+                |    &lt;div class="tab-pane active" <strong>id="home-panel"</strong>>
+                |      &lt;h3>Home&lt;/h3>
+                |    &lt;/div>
+                |    &lt;div class="tab-pane" <strong>id="profile-panel"</strong>>
+                |      &lt;h3>Profile&lt;/h3>
+                |    &lt;/div>
+                |    &lt;div class="tab-pane" <strong>id="messages-panel"</strong>>
+                |      &lt;h3>Messages&lt;/h3>
+                |    &lt;/div>
+                |  &lt;/div>
+
+          section 
+            p listen for click
+            //- don't ask why, have to use &lt; in the code below
+            pre
+              code.javascript
+                | $(document).ready(function() {
+                |   <strong>$('.tab-button').on('click', function(event) {</strong>
+                |     /* grab the id of the item we want to activate */
+                |     var id = $(event.target).attr('id');
+                |     /* show the proper tab */
+                |     $('.tab-button').parent('li').removeClass('active');
+                |     $('#' + id + '-tab').addClass('active');
+                |     /* show the proper panel*/
+                |     $('.tab-pane').removeClass('active');
+                |     $('#' + id + '-panel').addClass('active');
+                |     return false;
+                |   <strong>});</strong>
+                | });
+
+          section 
+            p find id based on event
+            pre
+              code.javascript
+                | $(document).ready(function() {
+                |   $('.tab-button').on('click', function(event) {
+                |     /* grab the id of the item we want to activate */
+                |     <strong>var id = $(event.target).attr('id');</strong>
+                |     /* show the proper tab */
+                |     $('.tab-button').parent('li').removeClass('active');
+                |     $('#' + id + '-tab').addClass('active');
+                |     /* show the proper panel*/
+                |     $('.tab-pane').removeClass('active');
+                |     $('#' + id + '-panel').addClass('active');
+                |     return false;
+                |   })
+                | });
+
+          section 
+            p use dom to retrieve and set state
+            pre
+              code.javascript 
+                | $(document).ready(function() {
+                |   $('.tab-button').on('click', function(event) {
+                |     /* grab the id of the item we want to activate */
+                |     var id = $(event.target).attr('id');
+                |     /* show the proper tab */
+                |     <strong>$('.tab-button').parent('li').removeClass('active');</strong>
+                |     <strong>$('#' + id + '-tab').addClass('active');</strong>
+                |     /* show the proper panel*/
+                |     <strong>$('.tab-pane').removeClass('active');</strong>
+                |     <strong>$('#' + id + '-panel').addClass('active');</strong>
+                |     return false;
+                |   })
+                | });
+
+          section 
+            h3 using this approach, we have a couple problems:
+            ul 
+              li updating the view directly from user events
+              li storing view state in the DOM
+              li what state is the application in?
+              li can we get directly to a part of the app (eg: refresh)?
+
+        //----------------------------------------------
+        //- 
+        //- EXAMPLE B
+        //- 
+        section
+          section 
+            h2 example b
+
+          section
+            h3 this time...
+            pre
+              code.html
+                | 
+                |  &lt;script src="./js/<strong>jquery.address.js</strong>">&lt;/script>
+                | 
+
+
+          section
+            h3 changes to our links
+            pre
+              code.html
+                | 
+                |  &lt;a href="<strong>#home</strong>" class="tab-button">Home&lt;/a>
+                | 
+
+          section
+            p the new code
+            pre
+              code.javascript 
+                |  $(document).ready(function() {
+                |    /* this time, instead, we're just 
+                |       going to listen for #url change */
+                |    <strong>$.address.change(function(event) {</strong>
+                |      /* events come out like this: "/home" */
+                |      var id = String(event.value).replace('/', '');
+                |      /* show the proper tab  */
+                |      $('.tab-button').parent('li').removeClass('active');
+                |      $('#' + id + '-tab').addClass('active');
+                |      /* show the proper panel */
+                |      $('.tab-pane').removeClass('active');
+                |      $('#' + id + '-panel').addClass('active');
+                |    <strong>});</strong> 
+                |  });
+
+          section 
+            p the guts are really the same...
+            pre
+              code.javascript 
+                |  $(document).ready(function() {
+                |    /* this time, instead, we're just 
+                |       going to listen for #url change */
+                |    $.address.change(function(event) {
+                |      /* events come out like this: "/home" */
+                |      var id = String(event.value).replace('/', '');
+                |      <strong>/* show the proper tab  */
+                |      $('.tab-button').parent('li').removeClass('active');
+                |      $('#' + id + '-tab').addClass('active');
+                |      /* show the proper panel */
+                |      $('.tab-pane').removeClass('active');
+                |      $('#' + id + '-panel').addClass('active');</strong> 
+                |    });
+                |  });
+
+          section
+            h2 so what's the difference?
+            h3.fragment we actually have a <strong>model</strong>
+            pre.fragment
+              code
+                |  
+                |  /example-b/<strong>#home</strong>
+                |  
+
+          section
+            p so when we want to update the view, 
+            h2.fragment we update the <strong>model</strong>
+            p.fragment and we <strong>bind</strong> the view to the model state
+            pre.fragment
+              code.javascript 
+                |  $(document).ready(function() {
+                |    /* this time, instead, we're just 
+                |       going to listen for #url change */
+                |    <strong>$.address.change(function(event) {</strong>
+                |      /* events come out like this: "/home" */
+                |      var id = String(event.value).replace('/', '');
+                |      /* show the proper tab  */
+                |      $('.tab-button').parent('li').removeClass('active');
+                |      $('#' + id + '-tab').addClass('active');
+                |      /* show the proper panel */
+                |      $('.tab-pane').removeClass('active');
+                |      $('#' + id + '-panel').addClass('active');
+                |    <strong>});</strong> 
+                |  });
+
+          section
+            p so <strong>NOW</strong> it doesn't matter how we update the model 
+            small (deep link or click), 
+            br 
+            h3.fragment the view(s) update automatically...
+            .fragment 
+              p this is <strong>REALLY COOL</strong> because the parts of our app
+              h2 no longer care about each other...
+
+          section
+            p seems trivial in a simple application, but as your application becomes more and more complex, this starts to get 
+            h2 really important
+
+          section
+            h1 data state bindings
+            small.fragment (TM)
 
         section
-          p let me illustrate
-          p with a simple example:
+          h3 turns out, deep linking actually shows us 
+          h1(style="font-size:230px") mvc
 
+        section
+          h1 mvc gotchas
+          ul
+            li doesn't mean you're writing good code
+            li doesn't mean you're writing modular code
+            li doesn't mean you're writing testable code
+            li it's going to get messy (use require/grunt)
 
 
     script(src="lib/js/head.min.js")

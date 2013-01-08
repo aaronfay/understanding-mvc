@@ -1,196 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Understanding MVC</title>
-    <meta name="description" content="A short introduction to MVC in the browser">
-    <meta name="author" content="Aaron Fay">
-    <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/default.css" id="theme">
-    <link rel="stylesheet" href="lib/css/zenburn.css"><!-- [if gt IE 9] <!<script src="lib/js/html5shiv.js"></script>-->
-    <!-- <![endif]-->
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h3 style="margin-bottom:0px;">understanding</h3>
-          <h1 style="font-size:230px;">MVC</h1>
-          <p class="fragment"><small>(or maintaining your sanity while developing full-scale applications in the browser...)</small></p>
-        </section>
-        <section>
-          <h3>@aaronfay</h3>
-          <h5>dev manager - strathcom media</h5>
-          <p>afay@strathcom.com</p>
-        </section>
-        <section>
-          <h3>background</h3>
-          <ul>
-            <li>~14 years web dev</li>
-            <li>bailed! on php ~2006 for python</li>
-            <li>django/backend dev to 2010</li>
-            <li>"discovered" javascript</li>
-          </ul>
-        </section>
-        <section>
-          <section> 
-            <h1>the problem</h1>
-          </section>
-          <section><b>(potential) employer</b>
-            <q style="display:block" class="fragment">So you know javascript?</q><br><b class="fragment">you (or me): </b>
-            <q style="display:block" class="fragment">Sure, I know some jQuery...</q>
-          </section>
-          <section><img src="img/jquery.png"></section>
-          <section><img src="img/jobs.png"></section>
-          <section>
-            <p>We need a jQuery Engineer...</p>
-            <p class="fragment"><img src="img/jquery-engineer.png"></p>
-          </section>
-          <section>
-            <h3>to build our new web app!</h3><img src="img/mytube.png">
-          </section>
-          <section>
-            <p>or worse...</p>
-          </section>
-          <section><img src="img/facebook.png"></section>
-          <section>
-            <h4>(12 months later)</h4>
-          </section>
-          <section>
-            <p>-- giant jquery screenshot --</p>
-          </section>
-          <section> 
-            <pre> <code>
-                 
-                /* bad code example 1 */</code></pre>
-          </section>
-          <section> 
-            <pre> <code>
-                 
-                /* bad code example 2 */</code></pre>
-          </section>
-          <section> 
-            <pre> <code>
-                 
-                /* bad code example 3 */</code></pre>
-          </section>
-        </section>
-        <section>
-          <section> 
-            <h2>We end up with some serious issues</h2><small class="fragment">(for example...)</small>
-          </section>
-          <section> 
-            <h3>managing state on client AND server</h3>
-            <pre> <code>
-                 
-                /* bad code example 1 */</code></pre>
-          </section>
-          <section> 
-            <h3>using the dom to determine view state</h3>
-            <pre> <code>
-                 
-                /* bad code example 2 */</code></pre>
-          </section>
-          <section> 
-            <h3>(gross) rendering html and code snippets on the server side</h3>
-            <pre> <code>
-                 
-                /* bad code example 3 */</code></pre>
-          </section>
-        </section>
-        <section>
-          <h1>there has to be </h1>
-          <h1>a better way</h1><small class="fragment">(and there is :)</small>
-        </section>
-        <section>
-          <h2>what is</h2>
-          <h1 style="font-size:230px">MVC?</h1>
-        </section>
-        <section>
-          <p>it's a "buzz word"</p>
-        </section>
-        <section>
-          <q>that thing you should be using</q>
-        </section>
-        <section>
-          <q>you're not a REAL developer until...</q>
-        </section>
-        <section>
-          <h3>Wikipedia says:</h3>
-          <blockquote>... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands ...</blockquote>
-        </section>
-        <section>
-          <p>(still confused)</p>
-        </section>
-        <section>
-          <h4>turning to the internet, EVERYONE claims to be it</h4>
-          <ul>
-            <li>django</li>
-            <li>angular</li>
-            <li>spine</li>
-            <li>knockout</li>
-            <li>rails</li>
-            <li>catalyst</li>
-            <li>robotlegs</li>
-          </ul>
-        </section>
-        <section> 
-          <h1>there's more!</h1>
-        </section>
-        <section>
-          <h3 class="fragment">MVC</h3>
-          <h3 class="fragment">MVCS</h3>
-          <h3 class="fragment">MVP</h3>
-          <h3 class="fragment">MVT</h3>
-          <h3 class="fragment">MVVM</h3>
-          <h3 class="fragment">MVW</h3>
-          <h3 class="fragment">MVMS</h3>
-        </section>
-        <section>
-          <h2>huh?</h2><img src="img/help-me.jpg">
-        </section>
-        <section>
-          <h3>what MVC really is</h3><small class="fragment">(clearly)</small>
-          <h2 class="fragment">misunderstood</h2>
-        </section>
-        <section>
-          <h3>it really should be called </h3>
-          <h1>data state bindings</h1><small class="fragment">(or something like that)</small>
-        </section>
-        <section>
-          <h4>more simply put:</h4>
-          <h2>binding views to your data.</h2><small class="fragment">(and that's really it)</small>
-        </section>
-        <section>
-          <p>let me illustrate</p>
-          <p>with a simple example:</p>
-        </section>
-      </div>
-    </div>
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
-    <script type="text/javascript">
-      // Full list of configuration options available here:
-      // https://github.com/hakimel/reveal.js#configuration
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
-        
-        // Optional libraries used to extend on reveal.js
-        dependencies: [
-          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-        ]
-      });
-    </script>
-  </body>
-</html>
+<!DOCTYPE html><html lang="en"><head><title>Understanding MVC</title><meta name="description" content="A short introduction to MVC in the browser"><meta name="author" content="Aaron Fay"><link rel="stylesheet" href="css/reveal.min.css"><link rel="stylesheet" href="css/theme/default.css" id="theme"><link rel="stylesheet" href="lib/css/zenburn.css"><!-- [if gt IE 9] <!<script src="lib/js/html5shiv.js"></script>--><!-- <![endif]--></head><body><div class="reveal"><div class="slides"><section><h3 style="margin-bottom:0px;">understanding</h3><h1 style="font-size:230px;">MVC</h1><p class="fragment"><small>(or maintaining your sanity while developing full-scale applications in the browser...)</small></p></section><section><h3>@aaronfay</h3><h5>dev manager - strathcom media</h5><p>afay@strathcom.com</p></section><section><h3>background</h3><ul><li>~14 years web dev</li><li>bailed! on php ~2006 for python</li><li>django/backend dev to 2010</li><li>"discovered" javascript</li></ul></section><section><section> <h1>the problem</h1></section><section><b>(potential) employer</b><q style="display:block" class="fragment">So you know javascript?</q><br><b class="fragment">you (or me): </b><q style="display:block" class="fragment">Sure, I know some jQuery...</q></section><section><img src="img/jquery.png"></section><section><img src="img/jobs.png"></section><section><p>We need a jQuery Engineer...</p><p class="fragment"><img src="img/jquery-engineer.png"></p></section><section><h3>to build our new web app!</h3><img src="img/mytube.png"></section><section><p>or worse...</p></section><section><img src="img/facebook.png"></section><section><h4>(12 months later)</h4></section><section><p>-- giant jquery screenshot --</p></section><section> <pre> <code> 
+/* bad code example 1 */</code></pre></section><section> <pre> <code> 
+/* bad code example 2 */</code></pre></section><section> <pre> <code> 
+/* bad code example 3 */</code></pre></section></section><section><section> <h2>We end up with some serious issues</h2><small class="fragment">(for example...)</small></section><section> <h3>managing state on client AND server</h3><pre> <code> 
+/* bad code example 1 */</code></pre></section><section> <h3>using the dom to determine view state</h3><pre> <code> 
+/* bad code example 2 */</code></pre></section><section> <h3>(gross) rendering html and code snippets on the server side</h3><pre> <code> 
+/* bad code example 3 */</code></pre></section></section><section><h1>there has to be </h1><h1>a better way</h1><small class="fragment">(and there is :)</small></section><section><h2>what is</h2><h1 style="font-size:230px">MVC?</h1></section><section><p>it's a "buzz word"</p></section><section><q>that thing you should be using</q></section><section><q>you're not a REAL developer until...</q></section><section><h3>Wikipedia says:</h3><blockquote>... a software architecture that separates the representation of information from the user's interaction with it. The model consists of application data and business rules, and the controller mediates input, converting it to commands for the model or view. A view can be any output representation of data, such as a chart or a diagram. Multiple views of the same data are possible, such as a pie chart for management and a tabular view for accountants code reusability and separation of concerns ...</blockquote></section><section><p>(still confused)</p></section><section><h4>turning to the internet, EVERYONE claims to be it</h4><ul><li>django</li><li>angular</li><li>spine</li><li>knockout</li><li>rails</li><li>catalyst</li><li>robotlegs</li></ul></section><section> <h1>there's more!</h1></section><section><h3 class="fragment">MVC</h3><h3 class="fragment">MVCS</h3><h3 class="fragment">MVP</h3><h3 class="fragment">MVT</h3><h3 class="fragment">MVVM</h3><h3 class="fragment">MVW</h3><h3 class="fragment">MVMS</h3><h3 class="fragment">...</h3></section><section><h2>huh?</h2><img src="img/help-me.jpg"></section><section><h3>what MVC really is</h3><small class="fragment">(clearly)</small><h2 class="fragment">misunderstood</h2></section><section><h3>it really should be called </h3><h1>data state bindings</h1><small class="fragment">(or something like that)</small></section><section><p>a simple example</p><p>(sans framework)</p></section><section><section> <h3>example A</h3></section><section> <p>some tabs using "ul" (a la bootstrap)</p><pre><code class="html"> &lt;ul class="nav nav-tabs">
+   &lt;li class="active" id="home-tab">
+     &lt;a href="#" class="tab-button" <strong>id="home"</strong>>Home&lt;/a>
+   &lt;/li>
+   &lt;li id="profile-tab">
+     &lt;a href="#" class="tab-button" <strong>id="profile"</strong>>Profile&lt;/a>
+   &lt;/li>
+   &lt;li id="messages-tab">
+     &lt;a href="#" class="tab-button" <strong>id="messages"</strong>>Messages&lt;/a>
+   &lt;/li>
+ &lt;/ul></code></pre></section><section> <p>le panels to match</p><pre><code class="html"> &lt;div class="tab-content">
+   &lt;div class="tab-pane active" <strong>id="home-panel"</strong>>
+     &lt;h3>Home&lt;/h3>
+   &lt;/div>
+   &lt;div class="tab-pane" <strong>id="profile-panel"</strong>>
+     &lt;h3>Profile&lt;/h3>
+   &lt;/div>
+   &lt;div class="tab-pane" <strong>id="messages-panel"</strong>>
+     &lt;h3>Messages&lt;/h3>
+   &lt;/div>
+ &lt;/div></code></pre></section><section> <p>listen for click</p><pre><code class="javascript">$(document).ready(function() {
+  <strong>$('.tab-button').on('click', function(event) {</strong>
+    /* grab the id of the item we want to activate */
+    var id = $(event.target).attr('id');
+    /* show the proper tab */
+    $('.tab-button').parent('li').removeClass('active');
+    $('#' + id + '-tab').addClass('active');
+    /* show the proper panel*/
+    $('.tab-pane').removeClass('active');
+    $('#' + id + '-panel').addClass('active');
+    return false;
+  <strong>});</strong>
+});</code></pre></section><section> <p>find id based on event</p><pre><code class="javascript">$(document).ready(function() {
+  $('.tab-button').on('click', function(event) {
+    /* grab the id of the item we want to activate */
+    <strong>var id = $(event.target).attr('id');</strong>
+    /* show the proper tab */
+    $('.tab-button').parent('li').removeClass('active');
+    $('#' + id + '-tab').addClass('active');
+    /* show the proper panel*/
+    $('.tab-pane').removeClass('active');
+    $('#' + id + '-panel').addClass('active');
+    return false;
+  })
+});</code></pre></section><section> <p>use dom to retrieve and set state</p><pre><code class="javascript"> 
+$(document).ready(function() {
+  $('.tab-button').on('click', function(event) {
+    /* grab the id of the item we want to activate */
+    var id = $(event.target).attr('id');
+    /* show the proper tab */
+    <strong>$('.tab-button').parent('li').removeClass('active');</strong>
+    <strong>$('#' + id + '-tab').addClass('active');</strong>
+    /* show the proper panel*/
+    <strong>$('.tab-pane').removeClass('active');</strong>
+    <strong>$('#' + id + '-panel').addClass('active');</strong>
+    return false;
+  })
+});</code></pre></section><section> <h3>using this approach, we have a couple problems:</h3><ul> <li>updating the view directly from user events</li><li>storing view state in the DOM</li><li>what state is the application in?</li><li>can we get directly to a part of the app (eg: refresh)?</li></ul></section></section><section><section> <h2>example b</h2></section><section><h3>this time...</h3><pre><code class="html"> 
+ &lt;script src="./js/<strong>jquery.address.js</strong>">&lt;/script>
+ </code></pre></section><section><h3>changes to our links</h3><pre><code class="html"> 
+ &lt;a href="<strong>#home</strong>" class="tab-button">Home&lt;/a>
+ </code></pre></section><section><p>the new code</p><pre><code class="javascript"> 
+ $(document).ready(function() {
+   /* this time, instead, we're just 
+      going to listen for #url change */
+   <strong>$.address.change(function(event) {</strong>
+     /* events come out like this: "/home" */
+     var id = String(event.value).replace('/', '');
+     /* show the proper tab  */
+     $('.tab-button').parent('li').removeClass('active');
+     $('#' + id + '-tab').addClass('active');
+     /* show the proper panel */
+     $('.tab-pane').removeClass('active');
+     $('#' + id + '-panel').addClass('active');
+   <strong>});</strong> 
+ });</code></pre></section><section> <p>the guts are really the same...</p><pre><code class="javascript"> 
+ $(document).ready(function() {
+   /* this time, instead, we're just 
+      going to listen for #url change */
+   $.address.change(function(event) {
+     /* events come out like this: "/home" */
+     var id = String(event.value).replace('/', '');
+     <strong>/* show the proper tab  */
+     $('.tab-button').parent('li').removeClass('active');
+     $('#' + id + '-tab').addClass('active');
+     /* show the proper panel */
+     $('.tab-pane').removeClass('active');
+     $('#' + id + '-panel').addClass('active');</strong> 
+   });
+ });</code></pre></section><section><h2>so what's the difference?</h2><h3 class="fragment">we actually have a <strong>model</strong></h3><pre class="fragment"><code> 
+ /example-b/<strong>#home</strong>
+ </code></pre></section><section><p>so when we want to update the view, </p><h2 class="fragment">we update the <strong>model</strong></h2><p class="fragment">and we <strong>bind</strong> the view to the model state</p><pre class="fragment"><code class="javascript"> 
+ $(document).ready(function() {
+   /* this time, instead, we're just 
+      going to listen for #url change */
+   <strong>$.address.change(function(event) {</strong>
+     /* events come out like this: "/home" */
+     var id = String(event.value).replace('/', '');
+     /* show the proper tab  */
+     $('.tab-button').parent('li').removeClass('active');
+     $('#' + id + '-tab').addClass('active');
+     /* show the proper panel */
+     $('.tab-pane').removeClass('active');
+     $('#' + id + '-panel').addClass('active');
+   <strong>});</strong> 
+ });</code></pre></section><section><p>so <strong>NOW</strong> it doesn't matter how we update the model </p><small>(deep link or click), </small><br><h3 class="fragment">the view(s) update automatically...</h3><div class="fragment"> <p>this is <strong>REALLY COOL</strong> because the parts of our app</p><h2>no longer care about each other...</h2></div></section><section><p>seems trivial in a simple application, but as your application becomes more and more complex, this starts to get </p><h2>really important</h2></section><section><h1>data state bindings</h1><small class="fragment">(TM)</small></section></section><section><h3>turns out, deep linking actually shows us </h3><h1 style="font-size:230px">mvc</h1></section><section><h1>mvc gotchas</h1><ul><li>doesn't mean you're writing good code</li><li>doesn't mean you're writing modular code</li><li>doesn't mean you're writing testable code</li><li>it's going to get messy (use require/grunt)</li></ul></section></div></div><script src="lib/js/head.min.js"></script><script src="js/reveal.min.js"></script><script type="text/javascript">// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+  controls: true,
+  progress: true,
+  history: true,
+  center: true,
+  
+  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+  
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+    { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>
