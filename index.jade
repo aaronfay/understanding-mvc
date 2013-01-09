@@ -73,22 +73,10 @@ html(lang="en")
             h4 (12 months later)
 
           section
-            p -- giant jquery screenshot --
+            h1 warning
+            h3 production code ahead
+            small.fragment (incriminating domain names and characteristics have been removed to protect the guilty...)
 
-          section 
-            pre 
-              code 
-                /* bad code example 1 */
-
-          section 
-            pre 
-              code 
-                /* bad code example 2 */
-
-          section 
-            pre 
-              code 
-                /* bad code example 3 */
 
         //----------------------------------------------
         //- 
@@ -101,22 +89,59 @@ html(lang="en")
 
           section 
             h3 managing state on client AND server
-            pre 
+            pre
               code 
-                /* bad code example 1 */
+                |  ...
+                |  $('.checkthismenu').addClass('loading');
+                |  progress_update('.nav_tree .page-item-2379'); 
+                |  <b>$('.checkthismenu').submit(function(){</b>
+                |    var theID = $(this).find('input').val();
+                |    $('#checkthis-' + theID).addClass('loading');
+                |    $('#checkthismenu-' + theID).addClass('loading');
+                |    //$('.checkthismenu').addClass('loading');
+                |    $('.checkthismenu').find('input').attr('disabled', true);
+                |  ...
 
           section 
-            h3 using the dom to determine view state
-            pre 
+            h3 using the dom to determine application state
+            pre
               code 
-                /* bad code example 2 */
+                |  ...
+                |  <b>if ($($nav + ' ul li').hasClass("page_parent"))</b>
+                |    $($nav + ' .page_parent ul').addClass("displayMe"); 
+                |  <b>if ($($nav + ' ul li').hasClass("page_ancestor"))</b>
+                |    $($nav + ' .page_ancestor').parent().addClass("displayMe"); 
+                |  //Hide the submenus
+                |  $($nav + ' ul li ul ').hide();
+                |  $($nav + ' ul li.page_item ul ').show();
+                |  $($nav + ' ul li.page_item ul ').parent().addClass("opened");
+                |  $('.displayMe').show();
+                |  $('.displayMe').parent().addClass("opened");
+                |  //Add a class to the parent li IF it has sub UL's
+                |  $($nav + " ul li:has(ul)").addClass("theParent");
+                |  //Da henchman
+                |  $($nav + " ul li ul li:has(a)").addClass("theChild");
+                |  ...
 
           section 
-            h3 (gross) rendering html and code snippets on the server side
-            pre 
-              code 
-                /* bad code example 3 */
-
+            h3 other ... gross ... things
+            pre
+              code.html
+                |  <b>&lt;a href="#" onclick="</b>
+                |  var aidObj = window.currentAction; 
+                |  max = Number(aidObj.meta.action_value_max);
+                |  var incr = Number(aidObj.meta.action_value_increment[0]);
+                |  var aid = aidObj.id; 
+                |  var current = Number(aidObj.amount());
+                |  if(current+incr>max){
+                |    aidObj.amount(max);
+                |  }else{
+                |    aidObj.on(true);
+                |    aidObj.amount(current+incr);
+                |  }
+                |  $('#popupmodalcontent .action_value').select();
+                |  return false;
+                |  <b>"></b>&lt;img id="popupmodalup" src="/images/actionpanearrowup.png" width="23" height="17" title="">&lt;/a>
         section
           h1 there has to be 
           h1 a better way
