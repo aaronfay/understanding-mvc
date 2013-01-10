@@ -141,231 +141,236 @@ $(document).ready(function () {
         data228 = 
             {"ID":228,"post_content":"<img class=\"alignnone  wp-image-715\" title=\"Volunteer your time\" src=\"http:\/\/domain.com\/wp-content\/uploads\/en\/27_Volunteer_v1.png\" alt=\"\" width=\"340\" height=\"442\" \/>","post_thumb":"<img width=\"42\" height=\"42\" src=\"http:\/\/domain.com\/wp-content\/uploads\/en\/29_VolunteerFNL_TB-42x42.jpg\" class=\"attachment action_image wp-post-image\" alt=\"29_VolunteerFNL_TB\" id=\"action_image_228\" title=\"\" \/>","post_title":"Volunteered my time","post_meta":{"action_vote":["606","606","606","932","932","1222"],"_edit_last":["36"],"_edit_lock":["1331906990:36"],"related_post":[""],"soy_box_size":["Default (310px)"],"soy_show_title":["Yes"],"soy_show_desc":["Yes"],"soy_post_style":["Normal"],"action_multiple":["1"],"action_prompt_title_en":["How many hours did you volunteer?"],"action_prompt_title_fr":["Combien d'heures de b\u00e9n\u00e9volat avez-vous effectu\u00e9es ?"],"action_prompt_text_en":["How many hours did you volunteer?"],"action_prompt_text_fr":["Combien d'heures de b\u00e9n\u00e9volat avez-vous effectu\u00e9es* ?"],"action_prompt_subtext_en":[""],"action_value_default":["1"],"action_value_max":["50"],"action_value_increment":["1"],"_thumbnail_id":["231"],"action_prompt_subtext_fr":[""],"related_impact":["a:2:{i:302;s:1:\"1\";i:304;s:1:\"1\";}"],"impact_detail_en_302":["<p><strong>Source:<\/strong><br \/>\nStudies show that volunteering improves health, increases happiness and lengthens life expectancy \u2013 <em>The Corporation for National and Community Service<\/em>.<\/p>\n"],"impact_detail_fr_302":["<p><strong>Source\u00a0:<\/strong><br \/>\nDes \u00e9tudes ont d\u00e9montr\u00e9 qu\u2019une personne qui fait du b\u00e9n\u00e9volat est en meilleure sant\u00e9, est plus heureuse et a une meilleure esp\u00e9rance de vie \u2013 <em>The Corporation for National and Community Service.<\/em><\/p>\n"],"impact_detail_en_304":["<p>Add one to the social benefit count for every hour volunteered.<\/p>\n"],"impact_detail_fr_304":["<p>Ajoutez 1 au compte de bienfait pour la soci\u00e9t\u00e9 pour chaque heure de b\u00e9n\u00e9volat effectu\u00e9e.<\/p>\n"]},"action_vote":6,"related_impact":"<tr class=\"actionimpact\" id=\"actionimpact_302\"><td class=\"icon\" title=\"1 Hour Volunteered : Click to view details\"><img width=\"31\" height=\"31\" src=\"http:\/\/domain.com\/wp-content\/uploads\/en\/impact_time.png\" class=\"attachment impact_icon wp-post-image\" alt=\"impact_time\" id=\"impact_icon_302\" style=\"float:left;\" title=\"1 Hour Volunteered : Click to view details\" \/><\/td><td class=\"data\" title=\"1 Hour Volunteered : Click to view details\"><span>1<\/span> Hour <div id=\"actionimpactcontent_302\" class=\"actionimpactcontent\" style=\"display:none;\"><h5>1 Hour Volunteered<\/h5><div class=\"contentinner\"><p><strong>Source:<\/strong><br \/>\nStudies show that volunteering improves health, increases happiness and lengthens life expectancy \u2013 <em>The Corporation for National and Community Service<\/em>.<\/p>\n<\/div><\/div><\/td><\/tr><tr class=\"actionimpact\" id=\"actionimpact_304\"><td class=\"icon\" title=\"1 Social benefit : Click to view details\"><img width=\"32\" height=\"31\" src=\"http:\/\/domain.com\/wp-content\/uploads\/en\/impact_people.png\" class=\"attachment impact_icon wp-post-image\" alt=\"impact_people\" id=\"impact_icon_304\" style=\"float:left;\" title=\"1 Social benefit : Click to view details\" \/><\/td><td class=\"data\" title=\"1 Social benefit : Click to view details\"><span>1<\/span> Social benefit <div id=\"actionimpactcontent_304\" class=\"actionimpactcontent\" style=\"display:none;\"><h5>1 Social benefit<\/h5><div class=\"contentinner\"><p>Add one to the social benefit count for every hour volunteered.<\/p>\n<\/div><\/div><\/td><\/tr>","site_tally":61,"user_tally":0,"poster_image":"http:\/\/domain.com\/wp-content\/uploads\/en\/27_Volunteer_v1-38x50.png"}
          
-        Action = function(data){
-            this.content = data.post_content;
-            this.id = data.ID;
-            this.meta = data.post_meta;
-            this.impact = data.related_impact;
-            this.title = data.post_title;
-            this.thumb = data.post_thumb;
-            this.action_vote = data.action_vote;
-            this.poster_image = data.poster_image;
-            this.amount = ko.observable('');
-            this.site_tally = ko.observable(data.site_tally);
-            this.user_tally = ko.observable(data.user_tally);
-            this.on = ko.observable(false);
-            this.vote = function(){
-        if(viewModel.actionVote()==this.id){
-          return true;
-        } else {
-          return false;
-        }
-      
-      }
-            this.vote.id = data.ID;
-      this.toggleVote = function(){   
-        $('#displayposter').html(this.content);
-        //console.log(this.id);
-        if(viewModel.actionVoted())return false;
-        if(this.vote()){
-          viewModel.actionVote('');
-        } else {
-          viewModel.actionVote(this.id);
-          //$('#displaypostertitle').html(this.title);
-        }
-        //console.log(viewModel.actionVote());
-      }
-       }
-        
-         
-    aDef=new Action(dataDef);
-        a384 = new Action(data384);
-        a375 = new Action(data375);
-        a368 = new Action(data368);
-        a365 = new Action(data365);
-        a352 = new Action(data352);
-        a349 = new Action(data349);
-        a399 = new Action(data399);
-        a396 = new Action(data396);
-        a228 = new Action(data228);        
-
+  jQuery.noConflict();
+  var $ = jQuery; 
+  jQuery(document).ready( function() {      
+    //#### START convert module list to dropdown jumpmenu  ######
+    $('ul.selectdropdown').each(function(){
+      var list=$(this),
+      select=$(document.createElement('select')).insertBefore($(this).hide());
+      $('li a', this).each(function(){
+      var target=$(this).attr('target'),
+      option=$(document.createElement('option'))
+       .appendTo(select)
+       .val(this.href)
+       .html($(this).html())
+      });
+      select.change(function(){
+        window.location.href=$(this).val();
+        return false;
+        });
+    });
+    //style the dropdowns
+    $("#module_navform select").val('/intro-modules/');
+    $("#module_navform select").css("font-size","14px");
+    $("#module_navform select").css("color","#FF9900");
+    $("#module_navform2 select").css("font-size","14px");
+    $("#module_navform2 select").css("color","#0073EA");
     
-        viewModel = { 
-      userid: '',
-            actions: ko.observableArray([a384,a375,a368,a365,a352,a349,a399,a396,a228]),
-      
-        i289: ko.observableArray([[a384,0.248],[a375,0.536],[a368,0.00014],[a365,0.134],[a352,0.394],[a349,0.248],[a399,0.701],[a396,0.048]]),
-        i291: ko.observableArray([[a375,0.176],[a368,0.0007],[a365,0.044],[a399,3.507],[a396,0.24]]),
-        i293: ko.observableArray([[a375,1.68],[a368,0.014],[a365,0.42],[a399,69.96],[a396,4.788]]),
-        i295: ko.observableArray([[a375,0.02],[a365,0.005]]),
-        i298: ko.observableArray([[a375,4],[a365,1]]),
-        i302: ko.observableArray([[a228,1]]),
-        i304: ko.observableArray([[a228,1]]),     currentAction: ko.observable(aDef),
-      actionVote: ko.observable(''),
-      actionVoted:  ko.observable('349') 
-        };
-        
-            var Is = [289,291,293,295,298,302,304]; // impact ids
+    //set the default for the sidebar drop down
+    $("#module_navform2 select").val('/intro-modules/');
+    $("#module_navform").show();
+    $("#module_navform2").show();
+    $('.sidebar_nav .page-item-' + 115).prepend( '<form id="checkthismenu-115" class="checkthismenu" target="" style="display:inline;"><input type="checkbox" class="menu_checkbox"  style="float:left;" value="115" /></form>' );
+    $('.sidebar_nav .page-item-' + 5723).prepend( '<form id="checkthismenu-5723" class="checkthismenu" target="" style="display:inline;"><input type="checkbox" class="menu_checkbox"  style="float:left;" value="5723" /></form>' );
+    $('.sidebar_nav .page-item-' + 5672).prepend( '<form id="checkthismenu-5672" class="checkthismenu" target="" style="display:inline;"><input type="checkbox" class="menu_checkbox"  style="float:left;" value="5672" /></form>' );
+    $('.sidebar_nav .page-item-' + 5679).prepend( '<form id="checkthismenu-5679" class="checkthismenu" target="" style="display:inline;"><input type="checkbox" class="menu_checkbox"  style="float:left;" value="5679" /></form>' );
+    $('.sidebar_nav .page-item-' + 5702).prepend( '<form id="checkthismenu-5702" class="checkthismenu" target="" style="display:inline;"><input type="checkbox" class="menu_checkbox"  style="float:left;" value="5702" /></form>' );
     
-        
-    viewModel.currentActionID = ko.dependentObservable( function() {
-      if(typeof viewModel.currentAction().id === 'undefined'){
-        return 0;
-      } else {
-        return viewModel.currentAction().id;
-      }
-    });
-    viewModel.popupmodaltitle = ko.dependentObservable( function() {
-      if(typeof viewModel.currentAction().meta.action_prompt_title_en === 'undefined'){
-        return "";
-      } else {
-        return viewModel.currentAction().meta.action_prompt_title_en[0];
-      }
-    });
-    viewModel.popupmodaltext = ko.dependentObservable( function() {
-      if(typeof viewModel.currentAction().meta.action_prompt_text_en  === 'undefined'){
-        return "";
-      } else {
-        return viewModel.currentAction().meta.action_prompt_text_en[0];
-      }
-    });
-    viewModel.popupmodalsubtext = ko.dependentObservable( function() {
-      if(typeof viewModel.currentAction().meta.action_prompt_subtext_en === 'undefined'){
-        return "";
-      } else {
-        return viewModel.currentAction().meta.action_prompt_subtext_en[0];
-      }
-    });
-    viewModel.popupmodalmax = ko.dependentObservable( function() {
-      if(typeof viewModel.currentAction().meta.action_value_max === 'undefined'){
-        return 1;
-      } else {
-        return viewModel.currentAction().meta.action_value_max[0];
-      }
-    });
- 
- 
- // impact total (first column) observables
-  
-        var newDependentObservable = function (id) {
-            return ko.dependentObservable(function() { 
-                var total = 0,
-                    i = 0,
-                    item,
-                    modifier,
-          decimal,
-                    action,
-          theTarget,
-                    iter = viewModel['i' + id]();
-          decimal = Number($('#tally_txt_'+ id).attr('rel'));
-                    //console.log($('#tally_txt_'+ id).attr('rel'));
-                    for (i = 0; i < iter.length; i ++) {
-                        item = iter[i];
-            //console.log(i);
-            //console.log(item);
-                        action = item[0];
-                        modifier = item[1];
-                        amount = action.amount();
-                        ischecked = action.on();
-            
-      //console.log(iter[i]);
-      //console.log('id:'+action.id+' modifier:'+modifier+' amount:'+amount+' on:'+ischecked);
-      
-              
-                        if (action.on() === true) {
-                            total = Number(total);
-              total += Number(modifier) * Number(amount);             
-              //round off to proper decimal
-              total = Number(total).toFixed(decimal); 
-              //console.log('id:'+action.id+' decimal:'+decimal+' total:'+total+' numtotal:'+Number(total));
-            }
+    var isComplete=new Array('2381','4706','4708');
+    //alert (isComplete);
+    var x;
+    for (x in isComplete) {
+      $('#checkthismenu-' + isComplete[x] + ' input').attr('checked',true);
+      $('#checkthis-' + isComplete[x] + ' input').attr('checked',true);
+      //alert ('#checkthismenu-' + isComplete[x] + ' input');
+    }
           
-          //total = Number(total).toFixed(decimal); 
-                    }
-        //console.log('total: '+total);
-                return total;
-            }); 
-        } 
-        
-    
-        for (var j = 0; j < Is.length; j ++) {
-            var id = Is[j];
-            var kee = 'i' + id + 'total'; // i1total
-      //console.log(kee);
-            viewModel[kee] = newDependentObservable(id);
-      
+    $('.checkthismenu input').click(function(){
+      $(this).parent().submit();
+      //alert(theID);
+    });
 
-      //console.log('kee'+viewModel[kee]);
-            // create the observableArray here also if you want
+    //!!! END functions for tracking  
+    $('.cform').submit(function(){ 
+      alert('submit');
+      return false;
+    });
+
+    // ####  START DROPDOWN MENUS #### 
+    $("#dropmenu ul").css({display: "none"}); // Opera Fix 
+    
+    $("#dropmenu li").hover(function(){ 
+      $(this).find('ul:first').css({visibility: "visible",display: "none"}).show(268); 
+    },function(){ 
+        $(this).find('ul:first').css({visibility: "hidden"}); 
+    }); 
+    
+    // #### END DROPDOWN MENUS #### 
+    //#### START sidebar accordian menus ####
+    $navmenu = '.sidebar_nav';
+    //If its a page parent (based off wordpress), add the class "displayMe"
+    //This way the accordion will be opened up on the page you are on.
+    if ($($navmenu + ' ul li').hasClass("current_page_parent")) {
+      $($navmenu + ' .current_page_parent ul').addClass("displayMe"); }
+    if ($($navmenu + ' ul li').hasClass("current_page_ancestor")) {
+      $($navmenu + ' .current_page_ancestor').parent().addClass("displayMe"); }
+
+    //Hide the submenus
+    $($navmenu + ' ul li ul ').hide();
+    $($navmenu + ' ul li.current_page_item ul ').show();
+    $($navmenu + ' ul li.current_page_item ul ').parent().addClass("opened");
+
+    $('.displayMe').show();
+    $('.displayMe').parent().addClass("opened");
+    //Add a class to the parent li IF it has sub UL's
+    $($navmenu + " ul li:has(ul)").addClass("theParent");
+
+    //Da henchman
+    $($navmenu + " ul li ul li:has(a)").addClass("theChild");
+
+    //Remove the link if it has a submenu
+    //$($navmenu + ' .theParent > a').attr('href', '#');
+    $($navmenu + ' ul li a').addClass("navmenulink"); 
+
+    //When you click it, toggle 
+    var togglemenu = function toggle_menu(){
+      //Onclick Remove the class displayMe which is only display:block;
+      //This way they can close it if they click it
+      if ($(this).attr('href') == '#') { 
+      if ($(this).parent().hasClass('opened')){
+        $(this).parent().removeClass("opened");
+      }else{
+        $(this).parent().addClass("opened");
+      }
+      //alert($(this).next().hasClass('opened')); 
+      //return false so the # doenst move view to the top of the page
+        if ($(this).attr('href') == '#') { 
+          return false; this.blur();  
+        } else {
+          return true; this.blur(); 
         }
-        
-    
-// impact usertotal (second column) observables
+      }
+    }
 
-        var userimpactDependentObservable = function (id) {
-            return ko.dependentObservable(function() { 
-                var total = 0,i = 0,item,modifier,decimal,action,theTarget,iter = viewModel['i' + id]();
-          decimal = 1;
-          //decimal = Number($('#tally_txt_'+ id).attr('rel'));
-                    for (i = 0; i < iter.length; i ++) {
-                        item = iter[i];
-                        action = item[0];
-                        amount = action.user_tally();
-            if(amount>0){   
-                        modifier = item[1];
-            total = Number(total);
-            total += Number(modifier) * Number(amount);             
-              total = Number(total).toFixed(decimal); 
-            }
-                    }
-                return total;
-            }); 
-        }   
-    
-    for (var j = 0; j < Is.length; j ++) {
-            var id = Is[j];
-            var kee = 'i' + id + 'usertotal'; // i1usertotal
-            viewModel[kee] = userimpactDependentObservable(id);
-        }
-    
-  
-// impact sitetotal (third column) observables
+    $('.navmenulink').bind('click', togglemenu);
+  }); //end ready function        
 
-        var siteimpactDependentObservable = function (id) {
-            return ko.dependentObservable(function() { 
-                var total = 0,i = 0,item,modifier,decimal,action,theTarget,iter = viewModel['i' + id]();
-          decimal = 0;
-          //decimal = Number($('#tally_txt_'+ id).attr('rel'));
-                    for (i = 0; i < iter.length; i ++) {
-                        item = iter[i];
-                        action = item[0];
-                        amount = action.site_tally();
-            if(amount>0){   
-                        modifier = item[1];
-            total = Number(total);
-              total += Number(modifier) * Number(amount); 
-              total = Number(total).toFixed(decimal);
-            }           
-                    }
-                return total;
-            }); 
-        }   
+  // supporting functions
+    //#####  update progress indicator   #####
+    //count up functions for progress indicator
+    function mod2(id, value, cssoffset) {
+      var numb = $(id).html();
+      var current_value = parseInt(numb);
+      // determine direction to go
+      var dir = 1;
+      var distance = current_value - value;
+      var timeout = 12;
+      var totaltime = timeout*(0-(timeout * distance));
+      var navanimate = timeout*(0-(timeout * distance)/2);
+      if (navanimate < 0) {
+        navanimate = 0-navanimate;
+      }
+      if(totaltime<0){totaltime=0-totaltime;}
+      //console.log(cssoffset+" : "+timeout+" : "+distance+" : "+totaltime);
+      if(distance=='-100'){
+        $('#sidebar_nav_progress_bar').css('backgroundPosition',cssoffset);
+        //console.log($('#sidebar_nav_progress_bar').css('backgroundPosition'));
+        $(id).html('100');
+        return false;
+      } 
+      $('#sidebar_nav_progress_bar').animate({backgroundPosition: cssoffset },navanimate);
+
+      if (distance > 0) {
+        dir *= -1;
+      }
+      //alert(id+":"+current_value+":"+value+":"+dir);
+      getThere(id, current_value, value, dir, timeout);
+    }
     
-    for (var j = 0; j < Is.length; j ++) {
-            var id = Is[j];
-            var kee = 'i' + id + 'sitetotal'; // i1usertotal
-            viewModel[kee] = siteimpactDependentObservable(id);
-        }   
+    //loopy
+    function getThere(id, current_value, target_value, dir, timeout) {
+      current_value += dir;
+      timeout = timeout - timeout*0.1;
+      $(id).html(current_value);
+      if (current_value != target_value && current_value < 100) {
+        setTimeout("getThere('"+id+"',"+current_value+","+target_value+","+dir+","+timeout+")", timeout);
+      } else {
+        current_value = null;
+        callback(); 
+      }
+    }
     
+    function callback(){
+      $('.checkthismenu').removeClass('loading');
+      $('.checkthismenu').find('input').attr('disabled',false);
+    }
     
+    //wrap it up
+    function progress_update(container) {
+      var output;
+      var boxes;
+      boxes = $(container).find('input[type=checkbox]');
+      boxes = boxes.length;
+      checkedboxes = $(container).find('input[type=checkbox]:checked');
+      checkedboxes = checkedboxes.length;
     
-        window.viewModel = viewModel;
-        window.Action = Action;
-        window.currentAction = viewModel.currentAction();
-        window.actionVoted = viewModel.actionVoted();
-        window.userid = viewModel.userid;
+      if(checkedboxes==0){
+        //console.log($('#sidebar_nav_progress_bar').css('backgroundPosition'));
+        $('#progress_checked').html('0');
+        $('#progress_percent').html('0');
+        $('#sidebar_nav_progress_bar').css('backgroundPosition','-314px 0px');
+        $('#progress_all').html(boxes);
+        //if (typeof callback == "function") callback(); else console.log(callback);
+        callback(); 
+        return false;
+      } 
+
+      var offset = 100-((checkedboxes*100)/boxes);
+      //alert(boxes + " : " + checkedboxes + " : " + offset);
+      var offset = 0-(offset*314)/100;
+      var cssoffset = offset + 'px 0px';
+      var percent = ((checkedboxes*100)/boxes);
+      percent = parseFloat(percent);
+      percent = percent.toFixed(0);
+      $('#progress_checked').html(checkedboxes);
+      $('#progress_all').html(boxes);
+      mod2('#progress_percent', percent, cssoffset);
+    }
+
+    $(document).ready( function() { 
+    //load progress indicators and checkboxes 
+    $('.checkthismenu').addClass('loading');
+    progress_update('.nav_tree .page-item-2379'); 
+    $('.checkthismenu').submit(function(){ 
+      var theID = $(this).find('input').val();
+      $('#checkthis-' + theID).addClass('loading');
+      $('#checkthismenu-' + theID).addClass('loading');
+      //$('.checkthismenu').addClass('loading');
+      $('.checkthismenu').find('input').attr('disabled', true);
+      //$(this).addClass('loading');
+      //alert('check');
+       //is the box checked?
+      var checked;
+      if($(this).find('input').attr('checked')){
+        checked='true';
+        attrChecked=true;
+      } else {
+        checked='false';
+        attrChecked=false;
+      } 
+        $.post( 
+           "/default/header-checkbox.php?is_complete=" + checked + "&postID=" + $(this).find('input').val(), 
+           function(data){ 
+           //alert("success");
+            $('#checkthis-' + theID).find('input').attr('checked', attrChecked);
+            $('#checkthismenu-' + theID).find('input').attr('checked', attrChecked);
+            progress_update('.page-item-2379');
+        }); 
+      return false;
+    }); 
     
-        ko.applyBindings(viewModel);
+  }); 
     jQuery('.digits').digits();
         
     });
