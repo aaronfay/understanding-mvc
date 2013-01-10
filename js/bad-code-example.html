@@ -27,7 +27,7 @@
     
     <style type="text/css">
 
-    /* ########### ACTIONTRACKER INLINE STYLES ############ */
+    /* ########### appname INLINE STYLES ############ */
 
     .jquerycheckbox img, img.jquery-checkbox  {
       cursor:pointer;
@@ -39,7 +39,7 @@
     <meta name='robots' content='noindex,nofollow' />
 <link rel="alternate" type="application/rss+xml" title="the project &raquo; Feed" href="./feed/" />
 <link rel="alternate" type="application/rss+xml" title="the project &raquo; Comments Feed" href="./comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title="the project &raquo; project Comments Feed" href="./actiontracker/feed/" />
+<link rel="alternate" type="application/rss+xml" title="the project &raquo; project Comments Feed" href="./appname/feed/" />
 <link rel='stylesheet' id='wp-polls-css'  href='./wp-content/plugins/wp-polls/polls-css.css?ver=2.50' type='text/css' media='all' />
 <link rel='stylesheet' id='amrusers-StyleSheets-css'  href='./wp-content/plugins/amr-users//css/style.css?ver=3.5' type='text/css' media='all' />
 <script type='text/javascript' src='./wp-includes/js/jquery/jquery.js?ver=1.8.3'></script>
@@ -54,7 +54,7 @@ var pollsL10n = {"ajax_url":"http:\/\/domain.com\/wp-content\/plugins\/wp-polls\
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./wp-includes/wlwmanifest.xml" /> 
 <link rel='prev' title='Page Inlay' href='./page-inlay/' />
 <link rel='next' title='ajax01' href='./ajax01/' />
-<link rel='canonical' href='./actiontracker/' />
+<link rel='canonical' href='./appname/' />
 
 <meta http-equiv="Content-Language" content="en-US" />
 <style type="text/css" media="screen">
@@ -64,7 +64,7 @@ var pollsL10n = {"ajax_url":"http:\/\/domain.com\/wp-content\/plugins\/wp-polls\
 .qtrans_flag_en { background:url(./wp-content/plugins/qtranslate/flags/gb.png) no-repeat }
 .qtrans_flag_fr { background:url(./wp-content/plugins/qtranslate/flags/fr.png) no-repeat }
 </style>
-<link hreflang="fr" href="http://fr.domain.com/actiontracker/" rel="alternate" />
+<link hreflang="fr" href="http://fr.domain.com/appname/" rel="alternate" />
    <link rel="stylesheet" href="./wp-content/plugins/tdo-mini-forms/tdomf-style-form.css" type="text/css" media="screen" />
    
 
@@ -100,7 +100,7 @@ body {background:none; background-color: #FFFFFF; }
 
     <script type="text/javascript" src="./wp-content/themes/project-name/javascript/inspire-ivanhoe-popup.js"></script> <!-- overlay functionality -->
     <script type="text/javascript" src="./wp-content/themes/project-name/javascript/jquery.alerts.js"></script> 
-    <script type='text/javascript' src='./wp-content/themes/project-name/javascript/actiontracker_functions.js'></script> <!-- popups to count multiple values within a checkbox -->
+    <script type='text/javascript' src='./wp-content/themes/project-name/javascript/appname.js'></script> <!-- popups to count multiple values within a checkbox -->
 
   <!-- for knockout js data binding -->
     <script type="text/javascript" src="./wp-content/themes/project-name/javascript/jquery.tmpl.js"></script> <!-- knockout js templates -->
@@ -513,7 +513,7 @@ jQuery.fn.digits = function(){
   </script>
 
 
-  <!-- END Actiontracker -->
+  <!-- END appname -->
 
     
     </head>
@@ -527,14 +527,14 @@ jQuery.fn.digits = function(){
 
   <div id="header"> 
       
-      <!--****** the impact totals for ivanhoe actiontracker ******--> 
+      <!--****** the impact totals for ivanhoe appname ******--> 
     
       <div id="mytotalactions" class="totals" title="Total actions tracked by me">0</div> 
     <div id="companytotalactions" class="totals" title="Total actions tracked by all employees">5405</div> 
     <div id="actionsperemployee" class="totals" title="Based on total # of employees : 1182">4.57</div> 
     <div id="totalemployees" style="display:none;">1182</div> 
      
-      <!--****** end of ivanhoe actiontracker impact totals ******-->
+      <!--****** end of ivanhoe appname impact totals ******-->
       
       <div id="social-networks"> </div>
       <div class="clearfix"></div>
@@ -542,8 +542,8 @@ jQuery.fn.digits = function(){
 
 
 <div class="wrap">
-        <div id="actiontracker">
-        <div id="actiontrackertitle">
+        <div id="appname">
+        <div id="appnametitle">
       <div id="lastactionstrackeddate">
         Last actions tracked: <span id="trackeddate"> None</span>
       </div>
@@ -2021,7 +2021,7 @@ Thanks for tracking!      </div>
       </div>
            
     </form> <!-- closes #trackerform -->
-      </div> <!-- closes #actiontracker -->
+      </div> <!-- closes #appname -->
       
       <!--**** end of code for the Actions list ****--> 
       
@@ -2308,7 +2308,7 @@ Thanks for tracking!      </div>
       <div id="campaignSidebar">
 
         <div id="polls-widget-5" class="widget widget_polls-widget"><h3 class="widget-title">Take the Challenge</h3><div id="polls-2" class="wp-polls">
-  <form id="polls_form_2" class="wp-polls-form" action="/actiontracker/?" method="post">
+  <form id="polls_form_2" class="wp-polls-form" action="/appname/?" method="post">
     <p style="display: none;"><input type="hidden" name="poll_id" value="2" /></p>
     <p style="text-align: left;">Commit to tracking your actions on the project. What level of commitment are you willing to make?<br><br>I commit to tracking my actions :</p><div id="polls-2-ans" class="wp-polls-ans"><ul class="wp-polls-ul">
     <li><input type="radio" id="poll-answer-8" name="poll_2" value="8" /> <label for="poll-answer-8">Once a day</label></li>
@@ -2319,7 +2319,7 @@ Thanks for tracking!      </div>
 </div>
 <div id="polls-2-loading" class="wp-polls-loading"><img src="./wp-content/plugins/wp-polls/images/loading.gif" width="16" height="16" alt="Loading ..." title="Loading ..." class="wp-polls-image" />&nbsp;Loading ...</div>
 </div><div id="polls-widget-4" class="widget widget_polls-widget"><h3 class="widget-title">Take the Survey</h3><div id="polls-1" class="wp-polls">
-  <form id="polls_form_1" class="wp-polls-form" action="/actiontracker/?" method="post">
+  <form id="polls_form_1" class="wp-polls-form" action="/appname/?" method="post">
     <p style="display: none;"><input type="hidden" name="poll_id" value="1" /></p>
     <p style="text-align: left;">How much energy does the average CFL lightbulb save in it's lifetime?</p><div id="polls-1-ans" class="wp-polls-ans"><ul class="wp-polls-ul">
     <li><input type="radio" id="poll-answer-1" name="poll_1" value="1" /> <label for="poll-answer-1">276 kilowatt-hours</label></li>
@@ -2537,7 +2537,7 @@ Thanks for tracking!      </div>
 <form method="post" action="/wp-content/plugins/tdo-mini-forms/tdomf-form-post.php" id='tdomf_form1' name='tdomf_form1' class='tdomf_form' >
   <div><input type='hidden' id='tdomf_key_1' name='tdomf_key_1' value='a75ee2a19b' /></div>
   <div><input type='hidden' id='tdomf_form_id' name='tdomf_form_id' value='1' /></div>
-  <div><input type='hidden' id='redirect' name='redirect' value='/actiontracker/?#tdomf_form1' /></div>
+  <div><input type='hidden' id='redirect' name='redirect' value='/appname/?#tdomf_form1' /></div>
   <!-- widgets start -->
   <!-- content start -->
   <fieldset>

@@ -24,6 +24,7 @@ html(lang="en")
           h3 @aaronfay
           h5 dev manager - strathcom media
           p afay@strathcom.com
+          a https://github.com/aaronfay/mvc-slides
 
         section
           h3 background
@@ -537,9 +538,61 @@ html(lang="en")
 
 
         section
-          h1 so...
-          h4 let's wire this in
+          section 
+            h1 so...
+            h4 let's wire this in
 
+          section 
+            h3 the viewModel
+            pre
+              code.javascript
+                |  $(document).ready(function() {
+                |    
+                |    /* the viewModel */
+                |    <b>var viewModel = {
+                |      tabState: ko.observable('/home')
+                |    }
+                |    ko.applyBindings(viewModel);</b>
+                | 
+                |    /* listen for #url change */
+                |    $.address.change(function(event) { 
+                |      var id = String(event.value);
+                |      <b>viewModel.tabState(id);</b>
+                |    }); 
+                |    
+                |  });
+
+          section 
+            h3 the bindings
+            pre
+              code.html
+                |  &lt;ul class="nav nav-tabs">
+                |    &lt;li <b>data-bind="css: {active: tabState() == '/home'}"</b>>
+                |      &lt;a href="#home">Home&lt;/a>
+                |    &lt;/li>
+                |    &lt;li <b>data-bind="css: {active: tabState() == '/profile'}"</b>>
+                |      &lt;a href="#profile">Profile&lt;/a>
+                |    &lt;/li>
+                |    &lt;li <b>data-bind="css: {active: tabState() == '/messages'}"</b>>
+                |      &lt;a href="#messages">Messages&lt;/a>
+                |    &lt;/li>
+                |  &lt;/ul>
+
+          section 
+            h3 the bindings
+            pre
+              code.html
+                |  &ltdiv class="tab-content">
+                |    &ltdiv class="tab-pane" 
+                |         <b>data-bind="css: {active: tabState() == '/home'}"</b>>
+                |    ...&lt/div>
+                |    &ltdiv class="tab-pane" 
+                |         <b>data-bind="css: {active: tabState() == '/profile'}"</b>>
+                |    ...&lt/div>
+                |    &ltdiv class="tab-pane" 
+                |         <b>data-bind="css: {active: tabState() == '/messages'}"</b>>
+                |    ...&lt/div>
+                |  &lt/div>
 
         section
           section
@@ -563,11 +616,11 @@ html(lang="en")
           h3 don't just do what I tell you
           h1 
             a(href="http://addyosmani.github.com/todomvc/") todomvc
-          p.fragment (choose your own adventure...)
+          p (choose your own adventure...)
 
 
         section
-          h4 (fin)
+          h2 (fin)
 
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
