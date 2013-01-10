@@ -5,8 +5,8 @@ html(lang="en")
     meta(name="description", content="A short introduction to MVC in the browser")
     meta(name="author", content="Aaron Fay")
     link(rel="stylesheet", href="css/reveal.min.css")
-    link(rel="stylesheet", href="css/theme/default.css", id="theme")
-    link(rel="stylesheet", href="lib/css/zenburn.css")
+    link(rel="stylesheet", href="css/theme/simple.css", id="theme")
+    link(rel="stylesheet", href="lib/css/github.css")
     // [if gt IE 9] <!
       <script src="lib/js/html5shiv.js"></script>
     // <![endif]
@@ -29,7 +29,7 @@ html(lang="en")
         section
           h3 background
           ul
-            li ~14 years web dev
+            li ~15 years web dev
             li bailed! on php ~2006 for python
             li django/backend dev to 2010
             li "discovered" javascript
@@ -50,18 +50,7 @@ html(lang="en")
             q.fragment(style="display:block") Sure, I know some jQuery...
 
           section
-            img(src="img/jquery.png")
-
-          section
-            img(src="img/jobs.png")
-
-          section
-            p We need a jQuery Engineer...
-            p.fragment
-              img(src="img/jquery-engineer.png")
-
-          section
-            h3 to build our new web app!
+            h2 we want this!
             img(src="img/mytube.png")
 
           section
@@ -69,6 +58,17 @@ html(lang="en")
 
           section
             img(src="img/facebook.png")
+
+          section
+            p We need a jQuery Engineer...
+            p.fragment
+              img(src="img/jquery-engineer.png")
+
+          section
+            img(src="img/jquery.png")
+
+          section
+            img(src="img/jobs.png")
 
           section
             h4 (12 months later)
@@ -91,7 +91,7 @@ html(lang="en")
           section 
             h3 managing state on client AND server
             pre
-              code 
+              code.javascript
                 |  ...
                 |  $('.checkthismenu').addClass('loading');
                 |  progress_update('.nav_tree .page-item-2379'); 
@@ -106,7 +106,7 @@ html(lang="en")
           section 
             h3 using the dom to determine application state
             pre
-              code 
+              code.javascript
                 |  ...
                 |  <b>if ($($nav + ' ul li').hasClass("page_parent"))</b>
                 |    $($nav + ' .page_parent ul').addClass("displayMe"); 
@@ -181,6 +181,7 @@ html(lang="en")
             li rails
             li catalyst
             li robotlegs
+            li ...
 
         section 
           h1 there's more!
@@ -193,6 +194,7 @@ html(lang="en")
           h3.fragment MVVM
           h3.fragment MVW
           h3.fragment MVMS
+          h3.fragment MV*
           h3.fragment ...
 
         section
@@ -387,6 +389,24 @@ html(lang="en")
                 |  
                 |  /example-b/<strong>#home</strong>
                 |  
+
+          section
+            h2 model
+            .fragment 
+              p &darr; 
+              h2 controller
+            .fragment
+              p &darr;
+              h2 view
+
+          section
+            h2 (model) #hashtag 
+            .fragment 
+              p &darr; 
+              h2 (controller) browser/history 
+            .fragment
+              p &darr;
+              h2 (view) html 
 
           section
             p so when we want to update the view, 
