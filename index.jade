@@ -540,30 +540,34 @@ html(lang="en")
           h1 so...
           h4 let's wire this in
 
-        section
-          p the app doesn't have to be 
-          h1 huge
-          p to use a framework
-          p and you'll add more later anyway
 
         section
-          h3 example c 
-          p using knockout
+          section
+            h1 some thoughts
+
+          section
+            p the app doesn't have to be 
+            h1(style="font-size:200px") huge
+            p to use a framework
+            p and you'll add more later anyway
+
+          section
+            h3 just because you use it ...
+            ul
+              li.fragment doesn't mean you're writing good code
+              li.fragment doesn't mean you're writing modular code
+              li.fragment doesn't mean you're writing testable code
+              li.fragment it's going to get messy (use require/grunt)
 
         section
-          h3 todomvc
-          p try them out
-
+          h3 don't just do what I tell you
+          h1 
+            a(href="http://addyosmani.github.com/todomvc/") todomvc
+          p.fragment (choose your own adventure...)
 
 
         section
-          h1 mvc gotchas
-          ul
-            li doesn't mean you're writing good code
-            li doesn't mean you're writing modular code
-            li doesn't mean you're writing testable code
-            li it's going to get messy (use require/grunt)
-
+          h4 (fin)
 
     script(src="lib/js/head.min.js")
     script(src="js/reveal.min.js")
