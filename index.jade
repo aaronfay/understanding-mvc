@@ -426,15 +426,119 @@ html(lang="en")
             small.fragment (TM)
 
         section
-          h3 turns out, deep linking actually shows us 
-          h1(style="font-size:230px") mvc
+          section 
+            h2 some fun...
+            h1 knockout.js
+
+          section
+            h2
+              a(href="http://knockoutjs.org") http://knockoutjs.org
+
+          section 
+            h1 MVVM
+            p.fragment MODEL VIEW VIEWMODEL 
+
+          section
+            h2 observables
+            pre
+              code.javascript
+                | var viewModel = {
+                |   firstName = <b>ko.observable('John')</b>,
+                |   lastName = <b>ko.observable('Smith')</b>
+                | };
+                | ko.applyBindings(viewModel);
+
+          section
+            h2 declarative bindings
+            pre
+              code.html
+                |  &lt;ul>
+                |    &lt;li <b>data-bind="text: firstName"</b>>&lt;/li>
+                |    &lt;li <b>data-bind="text: lastName"</b>>&lt;/li>
+                |  &lt;/ul>
+            p.fragment cool thing is, that's all you need
+
+          section 
+            h3 dead simple event handling
+            pre
+              code.html
+                | &lt;button <b>data-bind="click: doSomething"</b>>Press me&lt;/button>
+
+            pre
+              code.javascript
+                | viewModel.doSomething = function () {
+                |   // <b>scope here is viewModel</b>
+                |   console.log(this.firstName()); // John
+                | }
+
+          section
+            h3 nested observables, computed bindings
+            pre
+              code.javascript
+                | function Person(dat) {
+                |   this.firstName = <b>ko.observable(dat.firstName);</b>
+                |   this.lastName = <b>ko.observable(dat.lastName);</b>
+                |   this.staff = <b>ko.observable(dat.staff || false);</b>
+                |   // computed
+                |   <b>this.fullName = ko.computed(function () {
+                |     return this.firstName() + ' ' + this.lastName();
+                |   }, this);</b>
+                | }
+
+
+          section
+            h3 observable arrays
+            pre
+              code.javascript
+                | viewModel = {
+                |   people = <b>ko.observableArray</b>([
+                |     new Person({firstName: 'John', lastName: 'Smith'}),
+                |     new Person({firstName: 'Sue', lastName: 'Queue', staff: true})
+                |   ])
+                | };
+                | ko.applyBindings(viewModel);
+
+          section
+            h3 templates
+            pre
+              code.html
+                | &lt;div data-bind="<b>foreach: people</b>">
+                |   &lt;h2 data-bind="<b>text: fullName</b>">&lt;/h2>
+                |   &lt;div data-bind="<b>if: staff</b>">
+                |     &lt;a href="#" data-bind="<b>click: staffOnlyAction</b>">Click me&lt;/a>
+                |   &lt;/div>
+                | &lt;/div>
+
+            pre
+              code.javascript
+                | function Person(dat) {
+                |   ...
+                |   this.staffOnlyAction = function () {
+                |     /* scope is Person */
+                |   }
+                | }
+
+          section
+            h3 detached templates
+            pre
+              code.html
+                | &lt;div data-bind="template: {name: myTemplate, foreach: people}">
+                | &lt;/div>
+
+            pre
+              code.html
+                | &lt;script type="text/html" id="myTemplate">
+                |  &lt;-- template content here -->
+                | &lt;/script>
+
+          section
+            h2 lots of other features
+            a(href="http://knockoutjs.com") http://knockoutjs.com/
+
 
         section
-          h2 some fun...
-          p knockout.js
-
-        section
-          p show some simple examples, declarative bindings
+          h1 so...
+          h4 let's wire this in
 
         section
           p the app doesn't have to be 

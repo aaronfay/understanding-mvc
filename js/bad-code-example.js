@@ -223,7 +223,6 @@
             $('#checkthis-' + theID).find('input').attr('checked', attrChecked);
             $('#checkthismenu-' + theID).find('input').attr('checked', attrChecked);
             progress_update('.page-item-2379');
-
         }); 
       return false;
     }); 

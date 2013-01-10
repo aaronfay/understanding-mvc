@@ -143,7 +143,44 @@ $(document).ready(function() {
      $('.tab-pane').removeClass('active');
      $('#' + id + '-panel').addClass('active');
    <strong>});</strong> 
- });</code></pre></section><section><p>so <strong>NOW</strong> it doesn't matter how we update the model </p><small>(deep link or click), </small><br><h3 class="fragment">the view(s) update automatically...</h3><div class="fragment"> <p>this is <strong>REALLY COOL</strong> because the parts of our app</p><h2>no longer care about each other...</h2></div></section><section><p>seems trivial in a simple application, but as your application becomes more and more complex, this starts to get </p><h2>really important</h2></section><section><h1>data state bindings</h1><small class="fragment">(TM)</small></section></section><section><h3>turns out, deep linking actually shows us </h3><h1 style="font-size:230px">mvc</h1></section><section><h2>some fun...</h2><p>knockout.js</p></section><section><p>show some simple examples, declarative bindings</p></section><section><p>the app doesn't have to be </p><h1>huge</h1><p>to use a framework</p><p>and you'll add more later anyway</p></section><section><h3>example c </h3><p>using knockout</p></section><section><h3>todomvc</h3><p>try them out</p></section><section><h1>mvc gotchas</h1><ul><li>doesn't mean you're writing good code</li><li>doesn't mean you're writing modular code</li><li>doesn't mean you're writing testable code</li><li>it's going to get messy (use require/grunt)</li></ul></section></div></div><script src="lib/js/head.min.js"></script><script src="js/reveal.min.js"></script><script type="text/javascript">// Full list of configuration options available here:
+ });</code></pre></section><section><p>so <strong>NOW</strong> it doesn't matter how we update the model </p><small>(deep link or click), </small><br><h3 class="fragment">the view(s) update automatically...</h3><div class="fragment"> <p>this is <strong>REALLY COOL</strong> because the parts of our app</p><h2>no longer care about each other...</h2></div></section><section><p>seems trivial in a simple application, but as your application becomes more and more complex, this starts to get </p><h2>really important</h2></section><section><h1>data state bindings</h1><small class="fragment">(TM)</small></section></section><section><section> <h2>some fun...</h2><h1>knockout.js</h1></section><section><h2><a href="http://knockoutjs.org">http://knockoutjs.org</a></h2></section><section> <h1>MVVM</h1><p class="fragment">MODEL VIEW VIEWMODEL </p></section><section><h2>observables</h2><pre><code class="javascript">var viewModel = {
+  firstName = <b>ko.observable('John')</b>,
+  lastName = <b>ko.observable('Smith')</b>
+};
+ko.applyBindings(viewModel);</code></pre></section><section><h2>declarative bindings</h2><pre><code class="html"> &lt;ul>
+   &lt;li <b>data-bind="text: firstName"</b>>&lt;/li>
+   &lt;li <b>data-bind="text: lastName"</b>>&lt;/li>
+ &lt;/ul></code></pre><p class="fragment">cool thing is, that's all you need</p></section><section> <h3>dead simple event handling</h3><pre><code class="html">&lt;button <b>data-bind="click: doSomething"</b>>Press me&lt;/button></code></pre><pre><code class="javascript">viewModel.doSomething = function () {
+  // <b>scope here is viewModel</b>
+  console.log(this.firstName()); // John
+}</code></pre></section><section><h3>nested observables, computed bindings</h3><pre><code class="javascript">function Person(dat) {
+  this.firstName = <b>ko.observable(dat.firstName);</b>
+  this.lastName = <b>ko.observable(dat.lastName);</b>
+  this.staff = <b>ko.observable(dat.staff || false);</b>
+  // computed
+  <b>this.fullName = ko.computed(function () {
+    return this.firstName() + ' ' + this.lastName();
+  }, this);</b>
+}</code></pre></section><section><h3>observable arrays</h3><pre><code class="javascript">viewModel = {
+  people = <b>ko.observableArray</b>([
+    new Person({firstName: 'John', lastName: 'Smith'}),
+    new Person({firstName: 'Sue', lastName: 'Queue', staff: true})
+  ])
+};
+ko.applyBindings(viewModel);</code></pre></section><section><h3>templates</h3><pre><code class="html">&lt;div data-bind="<b>foreach: people</b>">
+  &lt;h2 data-bind="<b>text: fullName</b>">&lt;/h2>
+  &lt;div data-bind="<b>if: staff</b>">
+    &lt;a href="#" data-bind="<b>click: staffOnlyAction</b>">Click me&lt;/a>
+  &lt;/div>
+&lt;/div></code></pre><pre><code class="javascript">function Person(dat) {
+  ...
+  this.staffOnlyAction = function () {
+    /* scope is Person */
+  }
+}</code></pre></section><section><h3>detached templates</h3><pre><code class="html">&lt;div data-bind="template: {name: myTemplate, foreach: people}">
+&lt;/div></code></pre><pre><code class="html">&lt;script type="text/html" id="myTemplate">
+ &lt;-- template content here -->
+&lt;/script></code></pre></section><section><h2>lots of other features</h2><a href="http://knockoutjs.com">http://knockoutjs.com/</a></section></section><section><h1>so...</h1><h4>let's wire this in</h4></section><section><p>the app doesn't have to be </p><h1>huge</h1><p>to use a framework</p><p>and you'll add more later anyway</p></section><section><h3>example c </h3><p>using knockout</p></section><section><h3>todomvc</h3><p>try them out</p></section><section><h1>mvc gotchas</h1><ul><li>doesn't mean you're writing good code</li><li>doesn't mean you're writing modular code</li><li>doesn't mean you're writing testable code</li><li>it's going to get messy (use require/grunt)</li></ul></section></div></div><script src="lib/js/head.min.js"></script><script src="js/reveal.min.js"></script><script type="text/javascript">// Full list of configuration options available here:
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
   controls: true,
